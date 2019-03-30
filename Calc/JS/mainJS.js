@@ -1,6 +1,6 @@
 var b=0;
 var d=0;
-var j=0;
+
 var count=0;
 
 function Pars () {
@@ -45,9 +45,9 @@ function Add() {
             "            <td><input type=\"text\" class=\"Cell\" maxlength=\"1\" name=\"checks\" id=\"" + count + "_7\"  value=\"0\"></td>\n" +
             "            <td><input type=\"text\" class=\"Cell\" maxlength=\"1\" name=\"checks\" id=\"" + count + "_8\"  value=\"0\"></td>\n" +
             "            <td id=\"" + count + "_9\"></td>" + 
-            "        </tr>");
-        //$('.Start').before('<input type="checkbox" class="chek" >')
-    }
+            "        </tr>"
+        );
+	}
 }
 function Plus(a, h) {
     if (h == 0) return a;
@@ -56,18 +56,56 @@ function Plus(a, h) {
     return Plus(sum, carry);		// рекурсия
 }
 function Multiply(v, r) {
-	e=prompt('Введите номера строк',)
-    var mult = v & r;
+    q = "";
+
+	var gal=0;
+    for (j = 0; j <= count; j++) {
+        var check = $('#' + j + '_0').prop("checked");
+		if (check == true){
+			gal++;
+			//console.log(gal);
+		}
+		var arr=new Array(gal);
+		if (check == true) {
+		    for (u=1;u<=gal;u++){
+                for (i = 1; i <= 8; i++) {
+                    w = $('#' + j + '_' + i).val();                   
+                    q = q + w;                   
+                    
+                };
+                arr[u]=q;
+                q=0;
+		    };
+
+		};
+				console.log(arr);
+				//alert("Результат умножения:"+q+"="+p);
+    }
+    ;
 }
+;
+    /*for (i = 8; i >= 1; i--) {
+        o = $('#' + e + '_' + i).val();
+        arry[i]=parseInt(w);
+    };*/
+
+       /* if ((b == 0) || (b == 1)) {
+        }
+        v= parseInt(q);
+        r= parseInt(l);
+        var mult = v & r;
+        alert()*/
+
+
 $(document).ready(function() {
-    $('#check_all').click(function () {
+    $('#check_all').change(function () {
         e=false;
-        if (e==false){
+        if (this.checked){
         $("input[type=checkbox]").prop('checked', true);
-        e=true;
+
         }else{
             $("input[type=checkbox]").prop('checked', false);
-            e=false;
+
         }
 
     });
